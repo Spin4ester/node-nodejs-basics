@@ -1,5 +1,9 @@
+import * as fs from 'fs';
+
+const pathName = './src/streams/files/fileToRead.txt';
+
 const read = async () => {
-    // Write your code here 
+    fs.createReadStream(pathName).pipe(process.stdout)
 };
 
 await read();

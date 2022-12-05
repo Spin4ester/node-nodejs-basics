@@ -1,13 +1,17 @@
 import * as fs from 'fs';
 
-const filePath = './fs/files/fresh.txt'
+const filePath = './src/fs/files/fresh.txt'
 
 const create = async () => {
-    if (fs.existsSync(filePath)) {
-        throw new Error('FS operation failed');
-    } else {
-        fs.writeFileSync('./fs/files/fresh.txt', 'I am fresh and young')
-    }
+    fs.access(filePath, error => {
+        if (!error) {
+            throw new Error('FS operation failed')
+        } else {
+            fs.writeFile(filePath, 'I am fresh and young', (err) => {
+
+            })
+        }
+    });
 };
 
 await create();
